@@ -1,0 +1,30 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "Study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhihangwang/graphql.git"
+  },
+  "author": "jason.wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhihangwang/graphql/issues"
+  },
+  "homepage": "https://github.com/zhihangwang/graphql#readme",
+  "devDependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.4.8",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1"
+  }
+}
