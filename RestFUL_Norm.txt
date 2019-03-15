@@ -1,0 +1,23 @@
+URI(Uniform Resource Identifiers) 统一资源标示符
+
+URL(Uniform Resource Locator) 统一资源定位符
+
+URI 规范
+
+1. "/"分隔符一般用来对资源层级的划分, REST API对URI资源的定义具有唯一性，一个资源对应一个唯一的地址
+
+2. URI中尽量使用连字符"-"代替下划线"_"的使用
+
+3. URI中统一使用小写字母
+
+4. URI中不要包含文件(脚本)的扩展名
+
+URI 资源命名规范
+
+1. 文档(Document)类型的资源用名词(短语)单数命名
+
+2. 集合(Collection)类型的资源用名词(短语)复数命名
+
+3. 仓库(Store)类型的资源用名词(短语)复数命名
+
+4. 控制器(Controller)类型的资源用**动词(短语)**命名

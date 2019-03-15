@@ -1,52 +1,30 @@
-const express = require('express');
-const Body = require('body-parser');
-const { graphqlExpress } = require('apollo-server-express');
-const {
-    GraphQLObjectType,
-    GraphQLSchema,
-    GraphQLString,
-    GraphQLInt
-} = require('graphql');
+var express = require('express');
+var graphqlHTTP = require('express-graphql');
+var { buildSchema } = require('graphql');
 
+// 使用 GraphQL schema language 构造一个 schema
+var schema = buildSchema(`
+  type Query {
+    rollDice(numDice: Int!, numSides: Int): [Int]
+  }
+`);
 
-const User = new GraphQLObjectType({
-    name: 'User',
-    description: 'User对象',
-    fields: {
-        id: {
-            type: GraphQLInt
-        },
-        name: {
-            type: GraphQLString
-        },
-    }
-});
-
-const Query = new GraphQLObjectType({
-    name: 'Query',
-    fields: {
-        user: {
-            type: User,
-            args: {
-                id: {
-                    type: GraphQLInt
-                }
-            },
-            resolve: function(root, args) {
-                return { id: 1, name: '2' };
-            }
+// root 为每个端点入口 API 提供一个解析器
+var root = {
+    rollDice: function({ numDice, numSides }) {
+        var output = [];
+        for (var i = 0; i < numDice; i++) {
+            output.push(1 + Math.floor(Math.random() * (numSides || 6)));
         }
+        return output;
     }
-});
-const myGraphQLSchema = new GraphQLSchema({
-    query: Query
-});
-const app = new express();
-const PORT = 3000;
+};
 
-// Body is needed just for POST.
-app.use(Body());
-
-app.post('/graphql', graphqlExpress({ schema: myGraphQLSchema }));
-app.get('/graphql', graphqlExpress({ schema: myGraphQLSchema }));
-app.listen(PORT);
+var app = express();
+app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
+app.listen(4000);
+console.log('Running a GraphQL API server at localhost:4000/graphql');
