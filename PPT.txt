@@ -1,23 +1,5 @@
-1. 介绍 RestFul
 
-2. 怎么用 RestFul
-
-3. rest 优缺
-
-4. 为了解决RestFul 什么问题，然后引出 graphql 
-
-5. 介绍 Graphql
-
-6. 怎么用 grqphql
-
-7. graphql 优缺   https://segmentfault.com/a/1190000013961872#articleHeader4
-
-
- https://segmentfault.com/a/1190000013961872#articleHeader4
-
-
-
-
+https://segmentfault.com/a/1190000013961872#articleHeader4
 
 https://bungder.github.io/2017/07/24/REST/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io
 
@@ -31,25 +13,4 @@ https://www.jianshu.com/p/12dff5905cf6
 
 https://segmentfault.com/a/1190000014131950?utm_source=tag-newest
 
-
-
-/user/getUserList   get
-
-/user/getUserByUserId get
-
-/user/createUser post
-
-/user/updateUser post
-
-/user/removeUser post
-
-
-/users get
-
-/users/userId get
-
-/users post
-
-/users/userId patch
-
-/users/userId delete
+http://graphql.cn/graphql-js/passing-arguments/
