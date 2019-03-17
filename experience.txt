@@ -1,0 +1,1 @@
+1. GraphQLObjectType 需要实现接口 GraphQLInterfaceType

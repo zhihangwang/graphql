@@ -16,3 +16,5 @@ https://segmentfault.com/a/1190000014131950?utm_source=tag-newest
 http://graphql.cn/graphql-js/passing-arguments/
 
 https://blog.csdn.net/kikajack/article/details/79111738
+
+http://www.zhaiqianfeng.com/2017/06/learn-graphql-action-by-javascript.html
