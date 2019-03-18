@@ -272,12 +272,12 @@ let userMutation = new GraphQLObjectType({
                 updateModel: { type: updateUserInput }
             },
             resolve: (source, args, context) => {
-                let updateUser = _.filter(userData, (x) => { return x.id == args.updateModel.id });
+                let updateUser = _.first(_.filter(userData, (x) => { return x.id == args.updateModel.id }));
                 updateUser.name = args.updateModel.name;
-                var names = _.split(args.name, '.');
+                var names = _.split(args.updateModel.name, '.');
                 updateUser.firstName = _.first(names);
                 updateUser.lastName = _.last(names);
-                return _.first(userData, (x) => { return x.id == args.updateModel.id });
+                return updateUser;
             }
         }
     }
