@@ -31,7 +31,8 @@ var userList = [{
         firstName: 'GF',
         lastName: 'ds',
         roleId: 2,
-        leader: 3
+        leader: 3,
+        createDate: "2018-7-12 14:32:43"
     },
     {
         id: 5,

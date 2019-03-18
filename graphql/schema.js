@@ -18,20 +18,27 @@ var {
 
 let GraphQLDate = new GraphQLScalarType({
     name: 'Date',
-    serialize: parseDate,
-    parseValue: parseDate,
+    serialize: (value) => {
+        console.log('save：', value);
+        return new Date(value); // value sent to the client
+    },
+    parseValue: (value) => {
+        console.log('send', value);
+        return new Date(value); // value from the client
+    },
     parseLiteral: (ast) => {
-        console.log(ast);
-        if (ast) {
-            return parseDate(ast);
+        console.log("ast:", ast); // check type
+        try {
+            if (ast.kind == "StringValue") {
+                return new Date(ast.value);
+            }
+            return null;
+        } catch (err) {
+            return null;
         }
-        return null;
     }
 });
 
-function parseDate(ast) {
-    return new Date(ast);
-}
 
 let Role = new GraphQLEnumType({
     name: 'Role',
@@ -223,6 +230,9 @@ let updateUserInput = new GraphQLInputObjectType({
         },
         name: {
             type: new GraphQLNonNull(GraphQLString)
+        },
+        createDate: {
+            type: GraphQLDate
         }
     }
 });
@@ -277,6 +287,7 @@ let userMutation = new GraphQLObjectType({
                 var names = _.split(args.updateModel.name, '.');
                 updateUser.firstName = _.first(names);
                 updateUser.lastName = _.last(names);
+                updateUser.createDate = args.updateModel.createDate ? args.updateModel.createDate : updateUser.createDate;
                 return updateUser;
             }
         }
